@@ -3,22 +3,20 @@ import '../component/title_section.dart';
 import '../component/drawer.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+    required this.username,
+    required this.email,
+  });
   final String title;
+  final List<String> username;
+  final List<String> email;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         leading: Builder(
           builder: (context) {
             return IconButton(
@@ -42,18 +40,26 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TitleSection(
-              name: 'Oeschinen Lake Campground',
-              location: 'Kandersteg, Switzerland',
+            // const Text('Hello World'),
+            Container(
+              alignment: Alignment.topRight,
+              padding: const EdgeInsets.all(16),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Add button action here
+                  Navigator.of(context).pushReplacementNamed('/input');
+                },
+                child: const Text('Add'),
+              ),
             ),
-            TitleSection(
-              name: 'Oeschinen Lake Campground',
-              location: 'Kandersteg, Switzerland',
-            ),
-            TitleSection(
-              name: 'Oeschinen Lake Campground',
-              location: 'Kandersteg, Switzerland',
-            ),
+            username.isEmpty || email.isEmpty
+                ? const Text('No data available')
+                : Column(
+                  children: [
+                    for (int i = 0; i < username.length; i++)
+                      TitleSection(email: email[i], username: username[i]),
+                  ],
+                ),
           ],
         ),
       ),

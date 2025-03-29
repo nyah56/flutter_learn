@@ -5,7 +5,7 @@ class DrawerSection extends StatelessWidget {
 
   final String title;
 
-  final List<String> _menuItems = ['home', 'input'];
+  final List<String> _menuItems = ['home'];
 
   navigateTo(String route, BuildContext context) {
     Navigator.of(context).pushReplacementNamed(route);

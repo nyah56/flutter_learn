@@ -1,39 +1,42 @@
 import 'package:flutter/material.dart';
 
 class TitleSection extends StatelessWidget {
-  const TitleSection({super.key, required this.name, required this.location});
+  const TitleSection({super.key, required this.email, required this.username});
 
-  final String name;
-  final String location;
+  final String email;
+  final String username;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: [
-          Expanded(
-            /*1*/
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /*2*/
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    name,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Text(location, style: TextStyle(color: Colors.grey[500])),
-              ],
-            ),
-          ),
-          /*3*/
-          Icon(Icons.star, color: Colors.red[500]),
-          const Text('41'),
-        ],
-      ),
-    );
+    return buildTitleSection(username, email);
   }
+}
+
+Widget buildTitleSection(final String username, final String email) {
+  return Padding(
+    padding: const EdgeInsets.all(32),
+    child: Row(
+      children: [
+        Expanded(
+          /*1*/
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /*2*/
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  username,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Text(email, style: TextStyle(color: Colors.grey[500])),
+            ],
+          ),
+        ),
+        /*3*/
+        Icon(Icons.delete, color: Colors.red[500]),
+      ],
+    ),
+  );
 }
