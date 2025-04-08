@@ -27,12 +27,7 @@ class Input extends StatelessWidget {
         // the App.build method, and use it to set our appbar title.
         title: Text("My First App"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [FormExample()],
-        ),
-      ),
+      body: SizedBox(height: 200, child: FormExample()),
       drawer: DrawerSection(title: 'Input'),
     );
   }
